@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Menu, X } from "lucide-react";
 
 const nav = [
   { href: "#about", label: "About" },
@@ -12,6 +13,7 @@ const nav = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 40);
     on();
@@ -48,12 +50,32 @@ export function Nav() {
             </a>
           ))}
         </nav>
+        <button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden text-gold text-3xl"
+>
+  {menuOpen ? "✕" : "☰"}
+</button>
         <a
           href="#contact"
-          className="glass-gold rounded-full px-5 py-2 text-xs font-medium uppercase tracking-widest text-gold transition-all hover:gold-glow"
+          className="hidden md:inline-flex glass-gold rounded-full px-5 py-2 text-xs font-medium uppercase tracking-wide"
         >
           Open to Work
         </a>
+        {menuOpen && (
+  <div className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-md md:hidden flex flex-col items-center py-6 gap-5">
+    {nav.map((n) => (
+      <a
+        key={n.href}
+        href={n.href}
+        onClick={() => setMenuOpen(false)}
+        className="text-white text-lg hover:text-yellow-400"
+      >
+        {n.label}
+      </a>
+    ))}
+  </div>
+)}
       </div>
     </header>
   );
