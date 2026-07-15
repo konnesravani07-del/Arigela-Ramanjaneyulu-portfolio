@@ -210,12 +210,16 @@ export function Hero() {
             <FolderOpen className="h-4 w-4" /> View Projects
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </a>
-          <a
-            href="#contact"
-            className="glass inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold uppercase tracking-widest text-foreground transition-all hover:border-gold/50"
-          >
-            <Download className="h-4 w-4" /> Download Resume
-          </a>
+          
+            <a
+  href="/certificates/Resume - Arigela Ramanjaneyulu.pdf"
+  download
+  className="glass inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm"
+>
+  <Download className="h-4 w-4" />
+  Download Resume
+</a>
+            
         </motion.div>
 
         <motion.div
